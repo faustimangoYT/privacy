@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Form Filler for QA</title>
+<meta name="description" content="Privacy policy for the Form Filler for QA browser extension.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#fbfaf8;--fg:#1b1b1f;--muted:#5a5a63;--line:#dedbd4;--accent:#1c5d99;--code:#f1efe9}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#14161a;--fg:#e8e6e1;--muted:#a3a29c;--line:#31343a;--accent:#7fb2e5;--code:#1e2126}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:44rem;margin:0 auto;padding:2.5rem 1.25rem 5rem}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 1.5rem}
+h2{font-size:1.25rem;margin:2.5rem 0 .75rem;padding-top:.75rem;border-top:1px solid var(--line)}
+p,li{margin:0 0 1rem}
+ul{padding-left:1.25rem}
+strong{font-weight:600}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;
+  font:0.875em/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.tablewrap{overflow-x:auto;margin:0 0 1.5rem}
+table{border-collapse:collapse;width:100%;font-size:.9375rem}
+th,td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left;vertical-align:top}
+th{background:var(--code);font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.875rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Privacy Policy — Form Filler for QA</h1>
+<p><strong>Last updated: 6 September 2026.</strong></p>
+<h2>The short version</h2>
+<p>Form Filler for QA does not have a server that receives your data. Every value it types is generated in your browser, on the spot. There is no account, no tracking inside the extension, and nothing is sold or shared.</p>
+<h2>What the extension collects, precisely</h2>
+<p>This extension <strong>generates</strong> data; it does not gather it. During a fill it reads, <strong>on your device and only in the tab you acted on</strong>:</p>
+<div class="tablewrap"><table><thead><tr><th>Read</th><th>Not read</th></tr></thead><tbody>
+<tr><td>The <code>name</code>, <code>id</code>, <code>type</code>, <code>placeholder</code>, <code>autocomplete</code>, <code>aria-label</code> and <code>data-testid</code> attributes of form fields, to work out what each field is for</td><td>The <strong>values</strong> already in those fields — except to check whether a field is empty</td></tr>
+<tr><td>The text of the <code>&lt;label&gt;</code> associated with a field, as a classification hint</td><td>Any other page content, text or markup</td></tr>
+<tr><td>Whether a field is disabled, read-only or hidden, so it can skip it</td><td>Cookies, storage, or anything outside the form elements</td></tr>
+</tbody></table></div>
+<p>Everything it <strong>writes</strong> is generated locally at that moment: names, emails, phone numbers, addresses, document numbers, IBANs and test card numbers. None of it is fetched from anywhere.</p>
+<p>The extension never reads page content, form input, passwords or anything you type.</p>
+<h2>Why these specific fields</h2>
+<p>Field attributes are the minimum needed to tell an email box from a postcode box. Existing values are checked only for emptiness — the extension never records, transmits or inspects what you or anyone else has typed.</p>
+<p><strong>On the generated data.</strong> Document numbers and IBANs are synthetic values computed so that their checksum is mathematically correct, which is the only reason a form accepts them. They are not drawn from any register and correspond to no real person or account. The card numbers are the public test values that payment gateways publish for development use and are not valid for real transactions.</p>
+<h2>Where the data goes</h2>
+<ul>
+<li><strong>Saved profiles</strong>, if you choose to save any, are stored in <code>chrome.storage.sync</code>.</li>
+<li><strong>Preferences</strong> are stored in <code>chrome.storage.sync</code>, which means they travel through <strong>your own Chrome profile</strong> if you have Chrome Sync enabled. That is a Google service under your control; the developer has no access to it.</li>
+<li><strong>Nothing is transmitted to the developer or to any third party.</strong></li>
+</ul>
+<p>There are no exceptions. This extension is free, has no accounts, no licences and no paid tier, so it never contacts any server for any reason. It makes <strong>zero outbound network requests of its own</strong> — you can verify that in DevTools, or by reading <code>src/background/service-worker.js</code>, which contains no <code>fetch</code> call at all.</p>
+<h2>Permissions and why each one exists</h2>
+<div class="tablewrap"><table><thead><tr><th>Permission</th><th>Why</th></tr></thead><tbody>
+<tr><td><code>storage</code></td><td>Save your preferences, and any profiles you explicitly choose to save.</td></tr>
+<tr><td><code>scripting</code></td><td>Run the fill routine in the tab you acted on.</td></tr>
+<tr><td><code>activeTab</code></td><td>Grants access to the current tab <strong>only when you click the icon or press the shortcut</strong>, and revokes it when you navigate away.</td></tr>
+</tbody></table></div>
+<p><strong>This extension has no host permissions at all</strong> — not even optional ones. <code>activeTab</code> is the most restrictive access model Chrome offers, and it is sufficient because filling a form is always a deliberate action.</p>
+<p><strong>This extension cannot request access to any site, ever — it has no host permissions to request.</strong></p>
+<h2>Data retention and deletion</h2>
+<p>Up to 25 saved profiles are kept, and only if you explicitly save them. Nothing else is stored: generated data is discarded as soon as it is written into the form, and no record of what was filled is retained. You can delete any saved profile from the Settings page. Uninstalling the extension removes all local data.</p>
+<h2>Uninstall</h2>
+<p>Nothing happens when you uninstall. Most extensions open a survey page on uninstall; this one does not, because that would mean depending on a website that has to stay up. All local data is removed by Chrome when the extension is uninstalled.</p>
+<h2>Children</h2>
+<p>This is a professional developer tool. It is not directed at children and does not knowingly collect data from anyone.</p>
+<h2>Changes</h2>
+<p>If the data practices ever change, the extension will notify you inside the product before the change takes effect, as the Chrome Web Store disclosure policy requires. This document will be updated with a new date.</p>
+<h2>Contact</h2>
+<p>faustino20161@gmail.com</p>
+<footer>Source: <code>extensions/04-qa-form-filler/PRIVACY.md</code></footer>
+</main>
+</body>
+</html>

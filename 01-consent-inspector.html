@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Consent Inspector</title>
+<meta name="description" content="Privacy policy for the Consent Inspector browser extension.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#fbfaf8;--fg:#1b1b1f;--muted:#5a5a63;--line:#dedbd4;--accent:#1c5d99;--code:#f1efe9}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#14161a;--fg:#e8e6e1;--muted:#a3a29c;--line:#31343a;--accent:#7fb2e5;--code:#1e2126}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:44rem;margin:0 auto;padding:2.5rem 1.25rem 5rem}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 1.5rem}
+h2{font-size:1.25rem;margin:2.5rem 0 .75rem;padding-top:.75rem;border-top:1px solid var(--line)}
+p,li{margin:0 0 1rem}
+ul{padding-left:1.25rem}
+strong{font-weight:600}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;
+  font:0.875em/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.tablewrap{overflow-x:auto;margin:0 0 1.5rem}
+table{border-collapse:collapse;width:100%;font-size:.9375rem}
+th,td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left;vertical-align:top}
+th{background:var(--code);font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.875rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Privacy Policy — Consent Inspector</h1>
+<p><strong>Last updated: 6 September 2026.</strong></p>
+<h2>The short version</h2>
+<p>Consent Inspector does not have a server that receives your data. Everything an audit produces stays in your browser. There is no account, no tracking inside the extension, and nothing is sold or shared.</p>
+<h2>What the extension collects, precisely</h2>
+<p>During an audit — and only while an audit is running — the extension records, <strong>on your device</strong>:</p>
+<div class="tablewrap"><table><thead><tr><th>Recorded</th><th>Not recorded</th></tr></thead><tbody>
+<tr><td>Hostname, path and HTTP method of outgoing requests</td><td>Request bodies and headers</td></tr>
+<tr><td><strong>Names</strong> of query parameters</td><td><strong>Values</strong> of query parameters (replaced by their character length)</td></tr>
+<tr><td>Values of a short allow-list of consent-state parameters: <code>gcs</code>, <code>gcd</code>, <code>dma</code>, <code>dma_cps</code>, <code>npa</code>, <code>gdpr</code>, <code>gdpr_consent</code>, <code>us_privacy</code>, <code>gpp</code>, <code>gpp_sid</code>, <code>tid</code>, <code>en</code>, <code>ev</code></td><td>Any other parameter value</td></tr>
+<tr><td><code>dataLayer</code> event <strong>names</strong> and consent commands</td><td>Other <code>dataLayer</code> payload contents</td></tr>
+<tr><td>Cookie <strong>names</strong> and attributes (<code>Secure</code>, <code>SameSite</code>, session vs persistent)</td><td><strong>Cookie values — never</strong></td></tr>
+<tr><td>Presence and status of the IAB TCF API, and the <strong>length</strong> of the TC string</td><td>The TC string itself</td></tr>
+<tr><td>Whether <code>navigator.globalPrivacyControl</code> is set</td><td>—</td></tr>
+<tr><td>The URL of the page you chose to audit</td><td>Any other page you visit</td></tr>
+</tbody></table></div>
+<p>The extension never reads page content, form input, passwords or anything you type.</p>
+<h2>Why these specific fields</h2>
+<p>Each one maps to a check the extension performs. Parameter *values* are dropped because they are the only place personal data realistically appears in a tracking beacon — and the audit does not need them to do its job. The consent-state allow-list exists because those particular parameters encode the consent signal itself, which is the object of the audit; none of them carries personal data.</p>
+<p>This is the "strictly necessary to the disclosed single purpose" standard the Chrome Web Store requires, applied literally.</p>
+<h2>Where the data goes</h2>
+<ul>
+<li><strong>Audits</strong> are stored in <code>chrome.storage.local</code> on the device that ran them.</li>
+<li><strong>Preferences</strong> are stored in <code>chrome.storage.sync</code>, which means they travel through <strong>your own Chrome profile</strong> if you have Chrome Sync enabled. That is a Google service under your control; the developer has no access to it.</li>
+<li><strong>Nothing is transmitted to the developer or to any third party.</strong></li>
+</ul>
+<p>There are no exceptions. This extension is free, has no accounts, no licences and no paid tier, so it never contacts any server for any reason. It makes <strong>zero outbound network requests of its own</strong> — you can verify that in DevTools, or by reading <code>src/background/service-worker.js</code>, which contains no <code>fetch</code> call at all.</p>
+<h2>Exports</h2>
+<p>When you export a report, the file is generated in your browser and saved by you. It is not uploaded anywhere. Note that an exported report <strong>does contain the audited URL and the hostnames of the vendors found</strong> — treat it like any other client document.</p>
+<h2>Permissions and why each one exists</h2>
+<div class="tablewrap"><table><thead><tr><th>Permission</th><th>Why</th></tr></thead><tbody>
+<tr><td><code>storage</code></td><td>Save audits and preferences locally.</td></tr>
+<tr><td><code>scripting</code></td><td>Inject the observation scripts into the page you chose to audit.</td></tr>
+<tr><td><code>activeTab</code></td><td>Read the URL of the tab you are on, when you open the popup.</td></tr>
+<tr><td>Host access (optional, per-domain)</td><td>Observe network requests from the first byte. <strong>Requested one domain at a time</strong>, only when you start an audit, and revocable at any moment from <code>chrome://extensions</code>.</td></tr>
+</tbody></table></div>
+<p><strong>This extension never requests access to all sites.</strong></p>
+<h2>Data retention and deletion</h2>
+<p>The most recent 200 are kept on this device. Older ones are discarded automatically. You can delete any individual audit, or all of them, from the Settings page. Uninstalling the extension removes all local data.</p>
+<h2>Uninstall</h2>
+<p>Nothing happens when you uninstall. Most extensions open a survey page on uninstall; this one does not, because that would mean depending on a website that has to stay up. All local data is removed by Chrome when the extension is uninstalled.</p>
+<h2>Children</h2>
+<p>This is a professional developer tool. It is not directed at children and does not knowingly collect data from anyone.</p>
+<h2>Changes</h2>
+<p>If the data practices ever change, the extension will notify you inside the product before the change takes effect, as the Chrome Web Store disclosure policy requires. This document will be updated with a new date.</p>
+<h2>Contact</h2>
+<p>faustino20161@gmail.com</p>
+<footer>Source: <code>extensions/01-consent-inspector/PRIVACY.md</code></footer>
+</main>
+</body>
+</html>

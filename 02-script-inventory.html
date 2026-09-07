@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Script Inventory</title>
+<meta name="description" content="Privacy policy for the Script Inventory browser extension.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#fbfaf8;--fg:#1b1b1f;--muted:#5a5a63;--line:#dedbd4;--accent:#1c5d99;--code:#f1efe9}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#14161a;--fg:#e8e6e1;--muted:#a3a29c;--line:#31343a;--accent:#7fb2e5;--code:#1e2126}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:44rem;margin:0 auto;padding:2.5rem 1.25rem 5rem}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 1.5rem}
+h2{font-size:1.25rem;margin:2.5rem 0 .75rem;padding-top:.75rem;border-top:1px solid var(--line)}
+p,li{margin:0 0 1rem}
+ul{padding-left:1.25rem}
+strong{font-weight:600}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;
+  font:0.875em/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.tablewrap{overflow-x:auto;margin:0 0 1.5rem}
+table{border-collapse:collapse;width:100%;font-size:.9375rem}
+th,td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left;vertical-align:top}
+th{background:var(--code);font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.875rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Privacy Policy — Script Inventory</h1>
+<p><strong>Last updated: 6 September 2026.</strong></p>
+<h2>The short version</h2>
+<p>Script Inventory does not have a server that receives your data. Everything an audit produces stays in your browser. There is no account, no tracking inside the extension, and nothing is sold or shared.</p>
+<h2>What the extension collects, precisely</h2>
+<p>During a scan — and only while a scan is running — the extension records, <strong>on your device</strong>:</p>
+<div class="tablewrap"><table><thead><tr><th>Recorded</th><th>Not recorded</th></tr></thead><tbody>
+<tr><td>Script URLs, hostname and path</td><td>Script contents of external files</td></tr>
+<tr><td>How each script loaded (page source, runtime injection) and the apparent injector</td><td>—</td></tr>
+<tr><td><code>integrity</code>, <code>crossorigin</code>, <code>nonce</code>, <code>type</code>, <code>async</code>, <code>defer</code> attributes</td><td>—</td></tr>
+<tr><td>A <strong>SHA-256 hash</strong> of inline script contents, plus its character length</td><td>The inline script text itself</td></tr>
+<tr><td><strong>Names</strong> and <code>autocomplete</code> attributes of fields that look like card inputs</td><td><strong>Field values — never.</strong> Nothing anyone types</td></tr>
+<tr><td>Whether a Content-Security-Policy meta tag exists, and its <code>script-src</code> directive</td><td>Other page headers</td></tr>
+<tr><td>The URL of the page you chose to scan</td><td>Any other page you visit</td></tr>
+<tr><td>The written justifications <strong>you type</strong>, and the baselines <strong>you approve</strong></td><td>—</td></tr>
+</tbody></table></div>
+<p>The extension never reads page content, form input, card numbers or anything a user types.</p>
+<h2>Why these specific fields</h2>
+<p>Each one maps to a requirement. Script URLs and integrity attributes are the inventory itself. Inline scripts are hashed rather than stored so that a change is detectable without ever keeping the code. Card-like fields are detected <strong>by name only</strong>, purely to establish whether the page is in PCI scope — reading their values would be both unnecessary and grossly inappropriate for a tool used on payment pages.</p>
+<p>This is the "strictly necessary to the disclosed single purpose" standard the Chrome Web Store requires, applied literally.</p>
+<h2>Where the data goes</h2>
+<ul>
+<li><strong>Inventories, justifications and baselines</strong> are stored in <code>chrome.storage.local</code> on the device that ran them.</li>
+<li><strong>Preferences</strong> are stored in <code>chrome.storage.sync</code>, which means they travel through <strong>your own Chrome profile</strong> if you have Chrome Sync enabled. That is a Google service under your control; the developer has no access to it.</li>
+<li><strong>Nothing is transmitted to the developer or to any third party.</strong></li>
+</ul>
+<p>There are no exceptions. This extension is free, has no accounts, no licences and no paid tier, so it never contacts any server for any reason. It makes <strong>zero outbound network requests of its own</strong> — you can verify that in DevTools, or by reading <code>src/background/service-worker.js</code>, which contains no <code>fetch</code> call at all.</p>
+<h2>Exports</h2>
+<p>When you export a report, the file is generated in your browser and saved by you. It is not uploaded anywhere. Note that an exported report <strong>does contain the scanned URL, every script URL and your written justifications</strong> — treat it like any other client document.</p>
+<h2>Permissions and why each one exists</h2>
+<div class="tablewrap"><table><thead><tr><th>Permission</th><th>Why</th></tr></thead><tbody>
+<tr><td><code>storage</code></td><td>Save audits and preferences locally.</td></tr>
+<tr><td><code>scripting</code></td><td>Inject the observation scripts into the page you chose to audit.</td></tr>
+<tr><td><code>activeTab</code></td><td>Read the URL of the tab you are on, when you open the popup.</td></tr>
+<tr><td>Host access (optional, per-domain)</td><td>Observe the page from the first byte, so scripts present in the source are not missed. <strong>Requested one domain at a time</strong>, only when you start an audit, and revocable at any moment from <code>chrome://extensions</code>.</td></tr>
+</tbody></table></div>
+<p><strong>This extension never requests access to all sites.</strong></p>
+<h2>Data retention and deletion</h2>
+<p>The most recent 200 are kept on this device. Justifications and baselines are kept independently and are not deleted when scans are. Older ones are discarded automatically. You can delete any individual scan, or all of them, from the Settings page. Uninstalling the extension removes all local data.</p>
+<h2>Uninstall</h2>
+<p>Nothing happens when you uninstall. Most extensions open a survey page on uninstall; this one does not, because that would mean depending on a website that has to stay up. All local data is removed by Chrome when the extension is uninstalled.</p>
+<h2>Children</h2>
+<p>This is a professional developer tool. It is not directed at children and does not knowingly collect data from anyone.</p>
+<h2>Changes</h2>
+<p>If the data practices ever change, the extension will notify you inside the product before the change takes effect, as the Chrome Web Store disclosure policy requires. This document will be updated with a new date.</p>
+<h2>Contact</h2>
+<p>faustino20161@gmail.com</p>
+<footer>Source: <code>extensions/02-script-inventory/PRIVACY.md</code></footer>
+</main>
+</body>
+</html>

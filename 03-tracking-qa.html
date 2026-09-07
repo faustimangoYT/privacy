@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Tracking QA</title>
+<meta name="description" content="Privacy policy for the Tracking QA browser extension.">
+<meta name="robots" content="index,follow">
+<style>
+:root{--bg:#fbfaf8;--fg:#1b1b1f;--muted:#5a5a63;--line:#dedbd4;--accent:#1c5d99;--code:#f1efe9}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#14161a;--fg:#e8e6e1;--muted:#a3a29c;--line:#31343a;--accent:#7fb2e5;--code:#1e2126}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:44rem;margin:0 auto;padding:2.5rem 1.25rem 5rem}
+h1{font-size:1.9rem;line-height:1.25;margin:0 0 1.5rem}
+h2{font-size:1.25rem;margin:2.5rem 0 .75rem;padding-top:.75rem;border-top:1px solid var(--line)}
+p,li{margin:0 0 1rem}
+ul{padding-left:1.25rem}
+strong{font-weight:600}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;
+  font:0.875em/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.tablewrap{overflow-x:auto;margin:0 0 1.5rem}
+table{border-collapse:collapse;width:100%;font-size:.9375rem}
+th,td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left;vertical-align:top}
+th{background:var(--code);font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);
+  color:var(--muted);font-size:.875rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Privacy Policy — Tracking QA</h1>
+<p><strong>Last updated: 6 September 2026.</strong></p>
+<h2>The short version</h2>
+<p>Tracking QA does not have a server that receives your data. Everything an audit produces stays in your browser. There is no account, no tracking inside the extension, and nothing is sold or shared.</p>
+<h2>What the extension collects, precisely</h2>
+<p>During a run — and only while a run is recording — the extension records, <strong>on your device</strong>:</p>
+<div class="tablewrap"><table><thead><tr><th>Recorded</th><th>Not recorded</th></tr></thead><tbody>
+<tr><td>Hostname, path and HTTP method of requests to <strong>known analytics endpoints only</strong></td><td>Requests to anything else</td></tr>
+<tr><td>Query parameters of those beacons, name and value, truncated</td><td>Request headers</td></tr>
+<tr><td>Text request bodies of those beacons, parsed as parameters (this is how batched GA4 events are split)</td><td>Binary, Blob and FormData bodies — never read</td></tr>
+<tr><td>The URL of the page you chose to check</td><td>Any other page you visit</td></tr>
+<tr><td>The baselines <strong>you save</strong></td><td>—</td></tr>
+</tbody></table></div>
+<p>Requests to hosts that are not in the vendor table are ignored entirely — they are not recorded, counted or stored.</p>
+<p>The extension never reads page content, form input, passwords or anything you type.</p>
+<h2>Why these specific fields</h2>
+<p>The comparison needs the event name and its stable parameters, and nothing else. Volatile parameters — client and session identifiers, timestamps, cache busters, dimensions — are discarded at analysis time and never form part of a saved baseline.</p>
+<p>Note honestly: an analytics beacon <strong>can</strong> contain values a site chose to put there, and this extension records the parameters of those beacons. It does not inspect, interpret or transmit them, and they never leave your device — but if your own implementation sends personal data in a tracking parameter, that value will appear in your local run history. That is worth knowing, and it is also worth fixing in the implementation.</p>
+<h2>Where the data goes</h2>
+<ul>
+<li><strong>Runs and baselines</strong> are stored in <code>chrome.storage.local</code> on the device that ran them.</li>
+<li><strong>Preferences</strong> are stored in <code>chrome.storage.sync</code>, which means they travel through <strong>your own Chrome profile</strong> if you have Chrome Sync enabled. That is a Google service under your control; the developer has no access to it.</li>
+<li><strong>Nothing is transmitted to the developer or to any third party.</strong></li>
+</ul>
+<p>There are no exceptions. This extension is free, has no accounts, no licences and no paid tier, so it never contacts any server for any reason. It makes <strong>zero outbound network requests of its own</strong> — you can verify that in DevTools, or by reading <code>src/background/service-worker.js</code>, which contains no <code>fetch</code> call at all.</p>
+<h2>Exports</h2>
+<p>When you export a report, the file is generated in your browser and saved by you. It is not uploaded anywhere. Note that an exported report <strong>does contain the checked URL, the event names and their stable parameters</strong> — treat it like any other client document.</p>
+<h2>Permissions and why each one exists</h2>
+<div class="tablewrap"><table><thead><tr><th>Permission</th><th>Why</th></tr></thead><tbody>
+<tr><td><code>storage</code></td><td>Save audits and preferences locally.</td></tr>
+<tr><td><code>scripting</code></td><td>Inject the observation scripts into the page you chose to audit.</td></tr>
+<tr><td><code>activeTab</code></td><td>Read the URL of the tab you are on, when you open the popup.</td></tr>
+<tr><td>Host access (optional, per-domain)</td><td>Observe outgoing analytics beacons from the first byte. <strong>Requested one domain at a time</strong>, only when you start an audit, and revocable at any moment from <code>chrome://extensions</code>.</td></tr>
+</tbody></table></div>
+<p><strong>This extension never requests access to all sites.</strong></p>
+<h2>Data retention and deletion</h2>
+<p>The most recent 200 are kept on this device. Older ones are discarded automatically. You can delete any individual run, or all of them, from the Settings page. Baselines are removed from the popup. Uninstalling the extension removes all local data.</p>
+<h2>Uninstall</h2>
+<p>Nothing happens when you uninstall. Most extensions open a survey page on uninstall; this one does not, because that would mean depending on a website that has to stay up. All local data is removed by Chrome when the extension is uninstalled.</p>
+<h2>Children</h2>
+<p>This is a professional developer tool. It is not directed at children and does not knowingly collect data from anyone.</p>
+<h2>Changes</h2>
+<p>If the data practices ever change, the extension will notify you inside the product before the change takes effect, as the Chrome Web Store disclosure policy requires. This document will be updated with a new date.</p>
+<h2>Contact</h2>
+<p>faustino20161@gmail.com</p>
+<footer>Source: <code>extensions/03-tracking-qa/PRIVACY.md</code></footer>
+</main>
+</body>
+</html>
