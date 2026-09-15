@@ -2,8 +2,23 @@
 
 **Fecha:** 15 de Septiembre de 2026  
 **Proyecto:** AI Video Automation  
-**Repositorio:** faustimangoYT/YouTube_AI_Automation (Privado)  
+**Código fuente:** faustimangoYT/YouTube_AI_Automation (privado)  
+**Sitio público:** faustimangoYT/privacy (este repositorio, GitHub Pages)  
 **Propósito:** Solicitud de conformidad de auditoría de YouTube Data API
+
+---
+
+## URLs públicas para el formulario
+
+| Documento | URL |
+|-----------|-----|
+| Página principal | https://faustimangoyt.github.io/privacy/youtube-audit/01-index.html |
+| Política de Privacidad | https://faustimangoyt.github.io/privacy/youtube-audit/02-privacy-policy.html |
+| Términos de Servicio | https://faustimangoyt.github.io/privacy/youtube-audit/03-terms.html |
+| Diagrama de arquitectura | https://faustimangoyt.github.io/privacy/youtube-audit/09-architecture-diagram.svg |
+| Diagrama de flujo de usuario | https://faustimangoyt.github.io/privacy/youtube-audit/10-user-flow-diagram.svg |
+
+Abren sin iniciar sesión. El código fuente permanece en un repositorio privado aparte.
 
 ---
 
@@ -51,7 +66,7 @@ AI Video Automation es una **herramienta personal de automatización** para gest
 ## Estructura de Documentos
 
 ```
-docs/youtube-audit/
+youtube-audit/
 ├── README.md (este archivo)
 ├── 01-index.html (Página principal pública)
 ├── 02-privacy-policy.html (Política de Privacidad)
@@ -87,7 +102,7 @@ Este documento explica cómo cada artefacto corresponde a preguntas típicas del
 |-------|-----------|-----------|
 | Nombre de la Aplicación | **AI Video Automation** | 01-index.html |
 | Descripción breve | Herramienta personal para gestionar videos en tu canal de YouTube | 01-index.html, 02-privacy-policy.html |
-| URL de la aplicación | Será la URL pública de 01-index.html | 01-index.html |
+| URL de la aplicación | https://faustimangoyt.github.io/privacy/youtube-audit/01-index.html | 01-index.html |
 | Tipo de aplicación | Herramienta de automatización personal | 03-terms.html §2 |
 | Usuarios | 1 (Solo el propietario del canal) | 02-privacy-policy.html §4, 03-terms.html §1.1 |
 

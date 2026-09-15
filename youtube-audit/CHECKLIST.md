@@ -310,7 +310,7 @@
 
 ## 8. ESTRUCTURA Y ORGANIZACIÓN
 
-### 8.1 Carpeta docs/youtube-audit/
+### 8.1 Carpeta youtube-audit/
 
 - [x] Carpeta creada
 - [x] README.md completo

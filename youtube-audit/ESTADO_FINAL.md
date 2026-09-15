@@ -67,7 +67,7 @@ La aplicación es una **herramienta personal legítima** sin infracciones eviden
 ### Resumen de Creación
 
 ```
-docs/youtube-audit/
+youtube-audit/
 ├── Documentos HTML:        3 archivos (46 KB)
 ├── Diagramas SVG:          2 archivos (31 KB)
 ├── Documentación MD:       2 archivos (51 KB)
@@ -237,7 +237,7 @@ Algunas capturas no se incluyen porque:
 **Capturas HTML → PNG/PDF:**
 ```bash
 # Abrir en navegador Firefox o Chrome
-firefox /home/user/privacy/docs/youtube-audit/01-index.html
+firefox /home/user/privacy/youtube-audit/01-index.html
 
 # Print to PDF o screenshot:
 # Firefox: Ctrl+P → Print to PDF
