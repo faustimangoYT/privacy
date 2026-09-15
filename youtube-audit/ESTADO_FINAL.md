@@ -3,7 +3,7 @@
 **Generado:** 15 de Septiembre de 2026  
 **Proyecto:** AI Video Automation  
 **Rama:** claude/youtube-api-audit-resources-mab9w3  
-**Completitud Overall:** 64% (Documentación Completa, Evidencias Parciales)
+**Completitud Overall:** 71% (Documentación + Evidencias Principales Completas)
 
 ---
 
@@ -219,18 +219,19 @@ Algunas capturas no se incluyen porque:
 2. **Requieren Fase 2 completada** (UI de upload/analytics)
 3. **NO son bloqueantes** para la auditoría inicial
 
-### Tabla de Pendientes
+### Tabla de Estado
 
-| Archivo | Tipo | Requisito | Instrucciones |
-|---------|------|-----------|--------------|
-| 01-home-evidence.png | Screenshot | HTML → PNG | Abrir 01-index.html en navegador, Print to PDF o screenshot 1280x720+ |
-| 02-privacy-evidence.png | Screenshot | HTML → PNG | Abrir 02-privacy-policy.html, scroll para mostrar secciones clave, screenshot |
-| 03-terms.pdf | PDF | HTML → PDF | Abrir 03-terms.html, Print to PDF desde navegador |
-| 04-oauth-consent.png | Screenshot | OAuth real | Ejecutar OAuth flow, capturar pantalla de consentimiento |
-| 05-oauth-permissions.png | Screenshot | OAuth real | Capturar lista de permisos otorgados |
-| 06-oauth-revocation.png | Screenshot | Google Account | Ir a myaccount.google.com/permissions, capturar opción de revocación |
-| 07-upload-interface.png | Screenshot | Fase 2 | Implementar UI de subida en Fase 2, capturar |
-| 08-analytics-interface.png | Screenshot | Fase 2 | Implementar UI de analytics en Fase 2, capturar |
+| Archivo | Tipo | Requisito | Estado |
+|---------|------|-----------|--------|
+| 01-home-evidence.png | Screenshot | HTML → PNG | ✅ COMPLETO |
+| 02-privacy-evidence.png | Screenshot | HTML → PNG | ✅ COMPLETO |
+| 03-terms-evidence.png | Screenshot | HTML → PNG | ✅ COMPLETO |
+| 03-terms.pdf | PDF | HTML → PDF | ✅ COMPLETO |
+| 04-oauth-consent.png | Screenshot | OAuth real | ⏳ PENDIENTE |
+| 05-oauth-permissions.png | Screenshot | OAuth real | ⏳ PENDIENTE |
+| 06-oauth-revocation.png | Screenshot | Google Account | ⏳ PENDIENTE |
+| 07-upload-interface.png | Screenshot | Fase 2 | ⏳ PENDIENTE (Fase 2) |
+| 08-analytics-interface.png | Screenshot | Fase 2 | ⏳ PENDIENTE (Fase 2) |
 
 ### Cómo Obtener Capturas (Ahora)
 
