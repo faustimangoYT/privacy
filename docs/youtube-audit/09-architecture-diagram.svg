@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+      .box { fill: #dbeafe; stroke: #3b82f6; stroke-width: 2; }
+      .box-user { fill: #d1fae5; stroke: #10b981; stroke-width: 2; }
+      .box-google { fill: #fecaca; stroke: #ef4444; stroke-width: 2; }
+      .box-github { fill: #e9d5ff; stroke: #8b5cf6; stroke-width: 2; }
+      .text-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; }
+      .text-small { font-family: Arial, sans-serif; font-size: 12px; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" class="title">AI Video Automation - Arquitectura</text>
+
+  <!-- User/Developer -->
+  <rect x="50" y="100" width="150" height="80" class="box-user" rx="5"/>
+  <text x="125" y="135" text-anchor="middle" class="text-label">Propietario</text>
+  <text x="125" y="155" text-anchor="middle" class="text-label">del Canal</text>
+  <text x="125" y="170" text-anchor="middle" class="text-small">(Usuario Local)</text>
+
+  <!-- OAuth 2.0 -->
+  <rect x="300" y="80" width="150" height="120" class="box" rx="5"/>
+  <text x="375" y="120" text-anchor="middle" class="text-label">OAuth 2.0</text>
+  <text x="375" y="140" text-anchor="middle" class="text-small">Autorización</text>
+  <text x="375" y="160" text-anchor="middle" class="text-small">Segura</text>
+  <text x="375" y="175" text-anchor="middle" class="text-small">(No contraseña)</text>
+
+  <!-- AI Video Automation Core -->
+  <rect x="570" y="60" width="200" height="160" class="box" rx="5"/>
+  <text x="670" y="95" text-anchor="middle" class="text-label">AI Video</text>
+  <text x="670" y="115" text-anchor="middle" class="text-label">Automation</text>
+  <text x="670" y="135" text-anchor="middle" class="text-small">Config + Registry</text>
+  <text x="670" y="150" text-anchor="middle" class="text-small">Budget Guard</text>
+  <text x="670" y="165" text-anchor="middle" class="text-small">CI Budget</text>
+  <text x="670" y="180" text-anchor="middle" class="text-small">State + Cache</text>
+
+  <!-- GitHub Actions CI/CD -->
+  <rect x="880" y="80" width="150" height="120" class="box-github" rx="5"/>
+  <text x="955" y="120" text-anchor="middle" class="text-label">GitHub</text>
+  <text x="955" y="140" text-anchor="middle" class="text-label">Actions</text>
+  <text x="955" y="155" class="text-small">2000 min/mes</text>
+  <text x="955" y="170" class="text-small">(Monitoreo)</text>
+
+  <!-- YouTube Data API -->
+  <rect x="300" y="350" width="200" height="140" class="box-google" rx="5"/>
+  <text x="400" y="390" text-anchor="middle" class="text-label">YouTube</text>
+  <text x="400" y="410" text-anchor="middle" class="text-label">Data API</text>
+  <text x="400" y="430" text-anchor="middle" class="text-small">videos.insert</text>
+  <text x="400" y="445" text-anchor="middle" class="text-small">videos.update</text>
+  <text x="400" y="460" text-anchor="middle" class="text-small">analytics</text>
+
+  <!-- User's YouTube Channel -->
+  <rect x="700" y="350" width="200" height="140" class="box-google" rx="5"/>
+  <text x="800" y="390" text-anchor="middle" class="text-label">Canal</text>
+  <text x="800" y="410" text-anchor="middle" class="text-label">YouTube</text>
+  <text x="800" y="430" text-anchor="middle" class="text-small">Videos Publicados</text>
+  <text x="800" y="445" text-anchor="middle" class="text-small">Metadatos</text>
+  <text x="800" y="460" text-anchor="middle" class="text-small">Playlists</text>
+
+  <!-- Local Storage -->
+  <rect x="50" y="350" width="150" height="140" class="box" rx="5"/>
+  <text x="125" y="390" text-anchor="middle" class="text-label">Almacenamiento</text>
+  <text x="125" y="410" text-anchor="middle" class="text-label">Local</text>
+  <text x="125" y="430" text-anchor="middle" class="text-small">JSON</text>
+  <text x="125" y="445" text-anchor="middle" class="text-small">SQLite</text>
+  <text x="125" y="460" text-anchor="middle" class="text-small">Cache TTL</text>
+
+  <!-- Arrows -->
+  <!-- User to OAuth -->
+  <path class="arrow" d="M 200 140 L 300 140"/>
+
+  <!-- OAuth to Core -->
+  <path class="arrow" d="M 450 140 L 570 140"/>
+
+  <!-- Core to GitHub Actions -->
+  <path class="arrow" d="M 770 140 L 880 140"/>
+
+  <!-- Core to YouTube API -->
+  <path class="arrow" d="M 600 220 L 480 350"/>
+
+  <!-- YouTube API to YouTube Channel -->
+  <path class="arrow" d="M 500 420 L 700 420"/>
+
+  <!-- Core to Local Storage -->
+  <path class="arrow" d="M 570 150 L 200 380"/>
+  <path class="arrow" d="M 200 380 L 570 150"/>
+
+  <!-- Information Flow Labels -->
+  <text x="175" y="125" class="text-small" fill="#333">1. Solicita Auth</text>
+  <text x="410" y="125" class="text-small" fill="#333">2. Token OAuth</text>
+  <text x="730" y="125" class="text-small" fill="#333">3. Monitoreo</text>
+  <text x="520" y="280" class="text-small" fill="#333">4. Subida + Gestión</text>
+  <text x="600" y="450" class="text-small" fill="#333">5. Videos</text>
+  <text x="300" y="250" class="text-small" fill="#333">Cache local</text>
+
+  <!-- Bottom section: Key Features -->
+  <text x="50" y="650" class="text-label">Características Principales:</text>
+  <text x="70" y="680" class="text-small">✓ OAuth 2.0 (sin contraseñas)</text>
+  <text x="70" y="700" class="text-small">✓ Budget Guard (cuotas verificadas)</text>
+  <text x="70" y="720" class="text-small">✓ CI Budget (minutos GitHub Actions)</text>
+  <text x="420" y="680" class="text-small">✓ Cache + State local (privacidad)</text>
+  <text x="420" y="700" class="text-small">✓ Almacenamiento encriptado</text>
+  <text x="420" y="720" class="text-small">✓ Revocación fácil en Google Account</text>
+  <text x="850" y="680" class="text-small">✓ Zero spending verificable</text>
+  <text x="850" y="700" class="text-small">✓ Repositorio privado</text>
+  <text x="850" y="720" class="text-small">✓ CI/CD gratis (GitHub)</text>
+
+  <!-- Legend -->
+  <text x="50" y="780" class="text-label">Leyenda:</text>
+  <rect x="180" y="765" width="15" height="15" class="box-user"/>
+  <text x="205" y="778" class="text-small">Usuario Local</text>
+  <rect x="380" y="765" width="15" height="15" class="box"/>
+  <text x="405" y="778" class="text-small">Sistema</text>
+  <rect x="550" y="765" width="15" height="15" class="box-google"/>
+  <text x="575" y="778" class="text-small">Servicios Google/YouTube</text>
+  <rect x="900" y="765" width="15" height="15" class="box-github"/>
+  <text x="925" y="778" class="text-small">GitHub</text>
+</svg>

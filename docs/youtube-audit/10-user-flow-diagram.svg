@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1200 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .process { fill: #dbeafe; stroke: #3b82f6; stroke-width: 2; }
+      .decision { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .endpoint { fill: #d1fae5; stroke: #10b981; stroke-width: 2; }
+      .error { fill: #fecaca; stroke: #ef4444; stroke-width: 2; }
+      .text-label { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; }
+      .text-small { font-family: Arial, sans-serif; font-size: 11px; }
+      .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .title { font-family: Arial, sans-serif; font-size: 22px; font-weight: bold; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="35" text-anchor="middle" class="title">Flujo de Usuario - AI Video Automation</text>
+
+  <!-- Step 1: Inicio -->
+  <rect x="475" y="60" width="250" height="70" rx="35" class="endpoint"/>
+  <text x="600" y="95" text-anchor="middle" class="text-label">1. Inicio</text>
+  <text x="600" y="110" text-anchor="middle" class="text-small">Usuario abre aplicación</text>
+
+  <!-- Arrow down -->
+  <path class="arrow" d="M 600 130 L 600 170"/>
+
+  <!-- Step 2: Autorización OAuth -->
+  <rect x="450" y="170" width="300" height="80" class="process" rx="5"/>
+  <text x="600" y="200" text-anchor="middle" class="text-label">2. Autorización OAuth 2.0</text>
+  <text x="600" y="220" text-anchor="middle" class="text-small">Usuario autoriza app en Google</text>
+  <text x="600" y="235" text-anchor="middle" class="text-small">(No se solicita contraseña)</text>
+
+  <!-- Arrow down -->
+  <path class="arrow" d="M 600 250 L 600 290"/>
+
+  <!-- Step 3: Cargar Configuración -->
+  <rect x="450" y="290" width="300" height="80" class="process" rx="5"/>
+  <text x="600" y="320" text-anchor="middle" class="text-label">3. Cargar Configuración</text>
+  <text x="600" y="340" text-anchor="middle" class="text-small">Validar .env, credenciales</text>
+  <text x="600" y="355" text-anchor="middle" class="text-small">Conectar a YouTube API</text>
+
+  <!-- Arrow down -->
+  <path class="arrow" d="M 600 370 L 600 410"/>
+
+  <!-- Step 4: Validar Presupuesto -->
+  <polygon points="600,430 700,480 600,530 500,480" class="decision"/>
+  <text x="600" y="475" text-anchor="middle" class="text-label">4. ¿Hay Presupuesto?</text>
+  <text x="600" y="495" text-anchor="middle" class="text-small">Budget Guard + CI Budget</text>
+
+  <!-- NO path: Error -->
+  <path class="arrow" d="M 500 480 L 300 480"/>
+  <rect x="100" y="450" width="200" height="60" class="error" rx="5"/>
+  <text x="200" y="475" text-anchor="middle" class="text-label">❌ Presupuesto Agotado</text>
+  <text x="200" y="495" text-anchor="middle" class="text-small">Degradación automática</text>
+
+  <!-- YES path: Continue -->
+  <path class="arrow" d="M 600 530 L 600 570"/>
+  <text x="620" y="550" class="text-small" fill="#10b981">SÍ</text>
+
+  <!-- Step 5: Preparar Contenido -->
+  <rect x="450" y="570" width="300" height="80" class="process" rx="5"/>
+  <text x="600" y="600" text-anchor="middle" class="text-label">5. Preparar Contenido</text>
+  <text x="600" y="620" text-anchor="middle" class="text-small">Seleccionar video, metadatos</text>
+  <text x="600" y="635" text-anchor="middle" class="text-small">Validar según políticas</text>
+
+  <!-- Arrow down -->
+  <path class="arrow" d="M 600 650 L 600 690"/>
+
+  <!-- Step 6: Decidir Publicación -->
+  <polygon points="600,710 700,760 600,810 500,760" class="decision"/>
+  <text x="600" y="755" text-anchor="middle" class="text-label">6. Modo Publicación</text>
+  <text x="600" y="775" text-anchor="middle" class="text-small">¿AUTO_PUBLISH habilitado?</text>
+
+  <!-- Left path: Manual -->
+  <path class="arrow" d="M 500 760 L 350 760"/>
+  <rect x="150" y="730" width="200" height="60" class="process" rx="5"/>
+  <text x="250" y="755" text-anchor="middle" class="text-label">Manual (Fase 1)</text>
+  <text x="250" y="775" text-anchor="middle" class="text-small">Usuario revisa antes de subir</text>
+  <path class="arrow" d="M 250 730 L 250 620 L 450 620"/>
+
+  <!-- Right path: Auto -->
+  <path class="arrow" d="M 700 760 L 850 760"/>
+  <rect x="850" y="730" width="200" height="60" class="process" rx="5"/>
+  <text x="950" y="755" text-anchor="middle" class="text-label">Automático (Fase 2)</text>
+  <text x="950" y="775" text-anchor="middle" class="text-small">Subida directa a YouTube</text>
+  <text x="600" y="795" class="text-small" fill="#f59e0b">NO (Fase 1)</text>
+  <text x="750" y="795" class="text-small" fill="#f59e0b">SÍ (Fase 2+)</text>
+
+  <!-- Converge paths -->
+  <path class="arrow" d="M 600 650 L 600 580"/>
+
+  <!-- Step 7: Subida a YouTube -->
+  <rect x="450" y="850" width="300" height="80" class="process" rx="5"/>
+  <text x="600" y="880" text-anchor="middle" class="text-label">7. Subida a YouTube</text>
+  <text x="600" y="900" text-anchor="middle" class="text-small">youtube.videos.insert API</text>
+  <text x="600" y="915" text-anchor="middle" class="text-small">Consumir cuota</text>
+
+  <!-- Arrow down -->
+  <path class="arrow" d="M 600 930 L 600 970"/>
+
+  <!-- Final: Métricas -->
+  <rect x="475" y="970" width="250" height="70" rx="35" class="endpoint"/>
+  <text x="600" y="1000" text-anchor="middle" class="text-label">✓ Video Publicado</text>
+  <text x="600" y="1015" text-anchor="middle" class="text-small">Métricas disponibles</text>
+
+  <!-- Side annotations -->
+  <text x="100" y="60" class="text-label" fill="#666">Fase 1 (Actual):</text>
+  <text x="120" y="80" class="text-small" fill="#666">• Autorización OAuth</text>
+  <text x="120" y="95" class="text-small" fill="#666">• Validación de presupuesto</text>
+  <text x="120" y="110" class="text-small" fill="#666">• Publicación manual</text>
+  <text x="120" y="125" class="text-small" fill="#666">• Consulta de analíticas</text>
+
+  <text x="950" y="60" class="text-label" fill="#666">Fase 2 (Futuro):</text>
+  <text x="970" y="80" class="text-small" fill="#666">• Descargadores</text>
+  <text x="970" y="95" class="text-small" fill="#666">• AI content generation</text>
+  <text x="970" y="110" class="text-small" fill="#666">• Publicación automática</text>
+  <text x="970" y="125" class="text-small" fill="#666">• Monitoreo avanzado</text>
+
+  <!-- Bottom info -->
+  <text x="50" y="310" class="text-small" fill="#555" font-style="italic">Puntos de Control:</text>
+  <text x="70" y="325" class="text-small" fill="#555">→ Config se valida sin deps externas</text>
+  <text x="70" y="340" class="text-small" fill="#555">→ Secretos nunca se muestran en logs</text>
+  <text x="70" y="355" class="text-small" fill="#555">→ Límites desconocidos = BLOQUEO</text>
+  <text x="70" y="370" class="text-small" fill="#555">→ Presupuesto degradable automáticamente</text>
+</svg>
