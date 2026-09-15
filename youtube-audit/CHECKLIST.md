@@ -115,38 +115,38 @@
 
 ### 3.1 Página Principal (Screenshot)
 
-- [ ] Captura de 01-index.html
-- [ ] Resolución mínima 1280x720
-- [ ] Barra de direcciones visible
-- [ ] URL completa visible
-- [ ] Nombre "AI Video Automation" visible
-- [ ] Descripción visible
-- [ ] Enlace a Privacy Policy visible
-- [ ] Enlace a Terms visible
-- [ ] Referencia a YouTube visible
-- [ ] Formato PNG o PDF
-- [ ] Archivo: 01-home-evidence.png (PENDIENTE)
+- [x] Captura de 01-index.html
+- [x] Resolución mínima 1280x720
+- [x] Barra de direcciones visible
+- [x] URL completa visible
+- [x] Nombre "AI Video Automation" visible
+- [x] Descripción visible
+- [x] Enlace a Privacy Policy visible
+- [x] Enlace a Terms visible
+- [x] Referencia a YouTube visible
+- [x] Formato PNG o PDF
+- [x] Archivo: 01-home-evidence.png ✓ LISTO
 
 ### 3.2 Política de Privacidad (Screenshot)
 
-- [ ] Captura de 02-privacy-policy.html
-- [ ] Resolución mínima 1280x720
-- [ ] URL completa visible
-- [ ] Título "Política de Privacidad" visible
-- [ ] Secciones de datos visible
-- [ ] Enlace a Privacidad de Google visible
-- [ ] Tratamiento de datos visible
-- [ ] Revocación/eliminación visible
-- [ ] Formato PNG o PDF
-- [ ] Archivo: 02-privacy-evidence.png (PENDIENTE)
+- [x] Captura de 02-privacy-policy.html
+- [x] Resolución mínima 1280x720
+- [x] URL completa visible
+- [x] Título "Política de Privacidad" visible
+- [x] Secciones de datos visible
+- [x] Enlace a Privacidad de Google visible
+- [x] Tratamiento de datos visible
+- [x] Revocación/eliminación visible
+- [x] Formato PNG o PDF
+- [x] Archivo: 02-privacy-evidence.png ✓ LISTO
 
 ### 3.3 Términos de Servicio (PDF)
 
-- [ ] Documento PDF de 03-terms.html
-- [ ] Documento legible completo
-- [ ] Todas las secciones incluidas
-- [ ] Formato PDF
-- [ ] Archivo: 03-terms.pdf (PENDIENTE)
+- [x] Documento PDF de 03-terms.html
+- [x] Documento legible completo
+- [x] Todas las secciones incluidas
+- [x] Formato PDF
+- [x] Archivo: 03-terms.pdf ✓ LISTO
 
 ---
 
